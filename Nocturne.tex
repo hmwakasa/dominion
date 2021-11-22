@@ -1,0 +1,262 @@
+% +++
+% latex="texfot lualatex"
+% +++
+\documentclass{waku}
+\begin{document}
+\def\Expantion{夜想曲}\def\errata{2017}
+\CardInfo{Druid}{ドルイド}[祝福, （鬼火）]{Cost=2,Type=アクション—幸運,}{
+	\Vanilla{buy=1}
+	脇に置いてある祝福のうち 1 つを受ける（祝福は移動しない）。
+	\hmbar
+	準備: 祝福 3 枚を脇に表向きで置く。
+}
+\CardInfo{Faithful Hound}{忠犬}{Cost=2,Type=アクション—リアクション,Color=リアクション}{
+	\Vanilla{card=2}
+	\hmbar
+	このカードをクリーンアップフェイズ以外の場面で捨札に
+	するとき、これを脇に置いてもよい。脇に置いた場合、
+	このターンの終了時に手札に加える。
+}
+\CardInfo{Guardian}{守護者}{Cost=2,Type=夜行—持続,Color=夜行,ColorB=持続}{
+	あなたの次のターンの開始時まで、他のプレイヤーがアタック
+	カードを使用するとき、その影響を受けない。あなたの次の
+	ターンの開始時に、\PlusCoin{1}。
+	\hmbar
+	このカードは、捨札置き場ではなく、手札に獲得する。
+}
+\CardInfo{Monastery}{修道院}{Cost=2,Type=夜行}{
+	このターンに獲得したカード 1 枚につき、あなたの手札 1 枚か、
+	場の銅貨 1 枚を廃棄してもよい。
+}
+\CardInfo{Pixie}{ピクシー}[ヤギ, 祝福, 鬼火]{Cost=2,家宝=ヤギ,Type=アクション—幸運}{
+	\Vanilla{card=1,action=1}
+	一番上の祝福を捨札にする。これを廃棄して、その祝福
+	を 2 回受けてもよい。
+}
+\CardInfo{Tracker}{追跡者}[革袋, 祝福, 鬼火]{Cost=2,家宝=革袋,Type=アクション—幸運}{
+	\Vanilla{coin=1}
+	祝福を 1 つ受ける。
+	\hmbar
+	これが場にある間、カード 1 枚を獲得するとき、それを
+	あなたのデッキの上に置いてもよい。
+}
+\CardInfo{Changeling}{取り換え子}{Cost=3,Type=夜行}{
+	これを廃棄する。あなたの場のカード 1 枚と同じカード 1 枚を
+	獲得する。
+	\hmbar
+	取り換え子を使用するゲームで、コスト\Coin{3}以上の
+	カード 1 枚を獲得するとき、それを取り換え子と交換
+	してもよい。
+}
+\CardInfo{Fool}{愚者}[森の迷子]{Cost=3,家宝=幸運のコイン,Type=アクション—幸運}{
+	あなたが森の迷子でない場合、森の迷子と 3 つの祝福を取り、
+	好きな順番でそれらの祝福を受ける。
+}
+\CardInfo{Ghost Town}{ゴーストタウン}{Cost=3,Type=夜行—持続,Color=夜行,ColorB=持続}{
+	あなたの次のターンの開始時に、\PlusCard{1}、
+	\PlusAct{1}。
+	\hmbar
+	このカードは、捨札置き場ではなく、手札に獲得する。
+}
+\CardInfo{Leprechaun}{レプラコーン}[呪詛, 願い]{Cost=3,Type=アクション—不運}{
+	金貨 1 枚を獲得する。あなたの場のカードが 7 枚の場合、
+	願い 1 枚を獲得する、それ以外の場合、呪詛を 1 つ
+	受ける。
+}
+\CardInfo{Night Watchman}{夜警}{Cost=3,Type=夜行}{
+	あなたのデッキの上から 5 枚を見る。その中の好きな枚数を
+	捨札にし、残りを好きな順番で山札に戻す。
+	\hmbar
+	このカードは捨札置き場ではなく、手札に獲得する。
+}
+\CardInfo{Secret Cave}{秘密の洞窟}[魔法のランプ, 願い]{Cost=3,家宝=魔法のランプ,Type=アクション—持続,Color=持続}{
+	\Vanilla{card=1,action=1}
+	あなたの手札 3 枚を捨札にしてもよい。そうした場合、あなたの
+	次のターンの開始時に\PlusCoin{3}。
+}
+\CardInfo{Bard}{詩人}[祝福, 鬼火]{Cost=4,Type=アクション—幸運}{
+	\Vanilla{coin=2}
+	祝福を 1 つ受ける。
+}
+\CardInfo{Blessed Village}{恵みの村}[祝福, 鬼火]{Cost=4,Type=アクション—幸運}{
+	\Vanilla{card=1,action=2}
+	\hmbar
+	これを獲得するとき、祝福を 1 つ取り、それを今かあなた
+	の次のターンの開始時に受ける。
+}[2019HJ]
+\CardInfo{Cemetery}{墓地}[呪いの鏡, 幽霊]{Cost=4,Type=勝利点}{
+	\Vanilla[2]{}
+	\hmbar
+	これを獲得するとき、あなたの手札から最大 4 枚までのカードを
+	破棄する。
+}
+\CardInfo{Conclave}{コンクラーベ}{Cost=4}{
+	\Vanilla{coin=2}
+	あなたの場にないアクションカード 1 枚を手札から使用してもよい。
+	そうした場合、\PlusAct{1}。
+}
+\CardInfo{Devil's Workshop}{悪魔の工房}[インプ]{Cost=4,Type=夜行}{
+	このターンにあなたが獲得したカードの枚数が……
+	\begin{itemize}
+		\item 2 枚以上の場合、インプ 1 枚を獲得する。
+		\item 1 枚の場合、コスト\Coin{4}以下のカード 1 枚
+			を獲得する。
+		\item 0 枚の場合、金貨 1 枚を獲得する。
+	\end{itemize}
+}[2021私家]
+\CardInfo{Exorcist}{悪魔祓い}[鬼火, インプ, 幽霊]{Cost=4,Type=夜行}{
+	あなたの手札 1 枚を廃棄する。（精霊の山から）廃棄したカード
+	よりもコストが低い精霊 1 枚を獲得する。
+}
+\CardInfo{Necromancer}{ネクロマンサー}[ゾンビ（3 種）]{Cost=4}{
+	廃棄置き場にある持続でない表向きのアクションカード 1 枚
+	を選ぶ。このターン中、そのカードを裏向きにして、そこに
+	置いたまま使用する。
+	\hmbar
+	準備: 廃棄置き場にゾンビ 3 種類を置く。
+}[2021私家]
+\CardInfo{Shepherd}{羊飼い}[牧草地]{Cost=4,家宝=牧草地}{
+	\Vanilla{action=1}
+	好きな枚数の勝利点カードを公開して捨札にする。捨札にした
+	カード 1 枚につき、\PlusCard{2}。
+}
+\CardInfo{Skulk}{暗躍者}[呪詛]{Cost=4,Type=アクション—アタック—不運}{
+	\Vanilla{buy=1}
+	他のプレイヤーは全員、次の呪詛を 1 つ受ける。
+	\hmbar
+	これを獲得するとき、金貨 1 枚を獲得する。
+}[2017HJ]
+\CardInfo{Cobbler}{カブラー}{Cost=5,Type=夜行—持続,Color=夜行,ColorB=持続}{
+	あなたの次のターンの開始時に、コスト\Coin{4}以下の
+	カード 1 枚を手札に獲得する。
+}
+\CardInfo{Crypt}{納骨堂}{Cost=5,Type=夜行—持続,Color=夜行,ColorB=持続}{
+	あなたの場の財宝カードを好きな枚数だけ（このカードの）脇に
+	伏せて置く。それらのカードが残っている間、あなたの
+	各ターンの開始時に、その中の 1 枚をあなたの手札に加える。
+}[2017HJ]
+\CardInfo{Cursed Village}{呪われた村}[呪詛]{Cost=5,Type=アクション—不運}{
+	\Vanilla{action=2}
+	あなたの手札が 6 枚になるまでカードを引く。
+	\hmbar
+	これを獲得するとき、呪詛を 1 つ受ける。
+}
+\CardInfo{Den of Sin}{悪人のアジト}{Cost=5,Type=夜行—持続,Color=夜行,ColorB=持続}{
+	あなたの次のターンの開始時に\PlusCard{2}。
+	\hmbar
+	このカードは、捨札置き場ではなく、手札に獲得する。
+}
+\CardInfo{Idol}{偶像}[祝福, 鬼火]{Cost=5,Type=財宝—アタック—幸運,Color=財宝,MC=2}{
+	\Vanilla(2){}
+	あなたの場に偶像が……
+	\begin{itemize}
+		\item 奇数枚ある場合、祝福を 1 つ受ける。
+		\item 偶数枚ある場合、他のプレイヤーは全員、
+			呪い 1 枚を獲得する。
+	\end{itemize}
+}
+\CardInfo{Pooka}{プーカ}[呪われた金貨]{Cost=5,家宝=呪われた金貨}{
+	\PlusCard{4}を得るために、呪われた金貨以外の財宝
+	カード 1 枚をあなたの手札から廃棄してもよい。
+}
+\CardInfo{Sacred Grove}{聖なる木立ち}[祝福, 鬼火]{Cost=5,Type=アクション—幸運}{
+	\Vanilla{buy=1,coin=3}
+	祝福を 1 つ受ける。それが\PlusCoin{1}を与えない
+	場合、他のプレイヤーは全員、その祝福を受けてもよい。
+}
+\CardInfo{Tormentor}{迫害者}[インプ, 呪詛]{Cost=5,Type=アクション—アタック—不運}{
+	\Vanilla{coin=2}
+	あなたの場に他のカードがない場合、インプを獲得する。それ
+	以外の場合、他のプレイヤーは全員、次の呪詛を 1 つ受ける。
+}[2021私家]
+\CardInfo{Tragic Hero}{悲劇のヒーロー}{Cost=5}{
+	\Vanilla{card=3,buy=1}
+	引き終えた後、あなたの手札が 8 枚以上の場合、これを廃棄して
+	財宝カード 1 枚を獲得する。
+}
+\CardInfo{Vampire}{吸血鬼}[コウモリ]{Cost=5,Type=夜行—アタック—不運,Color=夜行}{
+	他のプレイヤーは全員、次の呪詛を受ける。その後、
+	あなたは吸血鬼以外のコスト\Coin{5}以下のカード 1 枚
+	を獲得する。これをコウモリに交換する。
+}
+\CardInfo{Werewolf}{人狼}[呪詛]{Cost=5,Type=アクション—夜行—アタック—不運,ColorB=夜行}{
+	あなたの夜フェイズである場合、他のプレイヤーは全員、
+	次の呪詛を 1 つ受ける。そうでない場合、\PlusCard{3}。
+}[2017HJ]
+\CardInfo{Raider}{夜襲}{Cost=6,Type=夜行—持続—アタック,Color=夜行,ColorB=持続}{
+	手札が 5 枚以上の他のプレイヤーは全員、あなたの
+	場にあるカードと同じカード 1 枚を捨札にする（ない
+	場合、手札を公開する）。あなたの次のターンの
+	開始時に、\PlusCoin{3}。
+}
+\CardInfo{Haunted Mirror}{呪いの鏡}{Cost=0,Type=財宝—家宝,Color=財宝,MC=1}[このカードには由来する山札はない]{
+	\Vanilla(1){}
+	\hmbar
+	これを廃棄したとき、あなたの手札からアクションカード 1 枚を
+	捨札にして、幽霊 1 枚を獲得してもよい。
+}[2017HJ]
+\CardInfo{Magic Lamp}{魔法のランプ}{Cost=0,Type=財宝—家宝,Color=財宝,MC=1}[このカードには由来する山札はない]{
+	\Vanilla(1){}
+	あなたの場に 1 枚しかないカードが 6 種類以上ある場合、これを
+	破棄する。そうした場合、願い 3 枚を獲得する。
+}
+\CardInfo{Goat}{ヤギ}{Cost=2,Type=財宝—家宝,Color=財宝,MC=1}[このカードには由来する山札はない]{
+	\Vanilla(1){}
+	あなたの手札 1 枚を廃棄してもよい。
+}
+\CardInfo{Pasture}{牧草地}{Cost=2,Type=財宝—勝利点—家宝,Color=財宝,ColorB=勝利点,MC=1}[このカードには由来する山札はない]{
+	\Vanilla(1){}
+	\hmbar
+	あなたの屋敷 1 枚につき\VP[1]。
+}
+\CardInfo{Pouch}{革袋}{Cost=2,Type=財宝—家宝,Color=財宝,MC=1}[このカードには由来する山札はない]{
+	\Vanilla(1){buy=1}
+}
+\CardInfo{Cursed Gold}{呪われた金貨}{Cost=4,Type=財宝—家宝,Color=財宝,MC=3}[このカードには由来する山札はない]{
+	\Vanilla(3){}
+	呪い 1 枚を獲得する。
+}
+\CardInfo{Lucky Coin}{幸運のコイン}{Cost=4,Type=財宝—家宝,Color=財宝,MC=1}[このカードには由来する山札はない]{
+	\Vanilla(1){}
+	銀貨 1 枚を獲得する。
+}
+\CardInfo{Will-o'-Wisp}{ウィル・オ・ウィスプ}*{CostA=\Coin{0}*,Type=アクション—精霊,Copy=12}{
+	\Vanilla{card=1,action=1}
+	あなたのデッキの一番上のカードを公開する。それが
+	コスト\Coin{2}以下の場合、それを手札に加える。
+}
+\CardInfo{Wish}{願い}*{CostA=\Coin{0}*,Copy=12}{
+	\Vanilla{action=1}
+	これを願いの山に戻す。そうした場合、コスト\Coin{6}以下
+	のカード 1 枚をあなたの手札に獲得する。
+}
+\CardInfo{Bat}{コウモリ}*{CostA=\Coin{2}*,Type=夜行}{
+	あなたの手札から最大 2 枚までのカードを廃棄する。1 枚以上
+	廃棄した場合、これを吸血鬼と交換する。
+}
+\CardInfo{Imp}{インプ}*{CostA=\Coin{2}*,Copy=13}{
+	\Vanilla{card=2}
+	あなたの場にないアクションカード 1 枚をあなたの
+	手札から使用してもよい。
+}
+\CardInfo{Zombie Apprentice}{ゾンビの弟子}{CostA=\Coin{3}*,Type=アクション—ゾンビ}[このカードには由来する山札はない]{
+	あなたの手札のアクションカード 1 枚を廃棄してもよい。
+	そうした場合、\PlusCard{1}、\PlusAct{1}。
+}
+\CardInfo{Zombie Mason}{ゾンビの石工}{CostA=\Coin{3}*,Type=アクション—ゾンビ}[このカードには由来する山札はない]{
+	あなたのデッキの一番上のカードを廃棄する。
+	それよりコストが最大\Coin{1}多いカード 1 枚
+	を獲得してもよい。
+}
+\CardInfo{Zombie Spy}{ゾンビの密偵}{CostA=\Coin{3}*,Type=アクション—ゾンビ}[このカードには由来する山札はない]{
+	\Vanilla{action=1,card=1}
+	あなたのデッキの一番上のカードを見る。それを
+	捨札にしてよい。
+}
+\CardInfo{Ghost}{幽霊}*{CostA=\Coin{4}*,Type=夜行—持続,Color=夜行,ColorB=持続,Copy=6}{
+	アクションカードが公開されるまで、あなたの
+	デッキの上からカードを公開する。他のカードを
+	捨札にし、そのアクションカードを脇に置く。
+	あなたの次のターンの開始時にそれを 2 回使用する。
+}
+\end{document}

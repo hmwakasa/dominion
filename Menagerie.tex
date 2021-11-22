@@ -1,0 +1,190 @@
+% +++
+% latex="texfot lualatex"
+% +++
+\documentclass{waku}
+\begin{document}
+\def\Expantion{移動動物園}\def\errata{2020}
+\CardInfo{Black Cat}{黒猫}{Cost=2,Type=アクション—アタック—リアクション,Color=リアクション}{
+	\Vanilla{card=2}
+	あなたのターンでない場合、他のプレイヤーは全員、
+	呪い 1 枚を獲得する。
+	\hmbar
+	他のプレイヤーが勝利点カードを獲得するとき、
+	あなたは手札からこれを使用してもよい。
+}
+\CardInfo{Sleigh}{そり}[馬]{Cost=2,Type=アクション—リアクション,Color=リアクション}{
+	馬 2 枚を獲得する。
+	\hmbar
+	あなたがカード 1 枚を獲得するとき、それをあなたの手札に
+	加えるかあなたのデッキの上に置くために、これを捨札にして
+	よい。
+}
+\CardInfo{Supply}{配給品}[馬]{Cost=2,Type=財宝,MC=1}{
+	\Vanilla(1){}
+	馬 1 枚をあなたのデッキの上に獲得する。
+}
+\CardInfo{Camel Train}{ラクダの隊列}{Cost=3,}{
+	サプライから勝利点以外のカードを 1 枚追放する。
+	\hmbar
+	これを獲得するとき、サプライの金貨 1 枚を追放する。
+}
+\CardInfo{Goatherd}{ヤギ飼い}{Cost=3,}{
+	\Vanilla{action=1}
+	あなたの手札 1 枚を廃棄してもよい。右隣のプレイヤーの
+	最後のターンに、そのプレイヤーが廃棄したカード 1 枚に
+	つき\PlusCard{1}。
+}
+\CardInfo{Scrap}{がらくた}[馬]{Cost=3,}{
+	あなたの手札 1 枚を廃棄する。そのコスト\Coin{1}につき、
+	次から異なるものを次の中から選び、上から順に実行する。
+	\begin{itemize}
+		\item \PlusCard{1}
+		\item \PlusAct{1}
+		\item \PlusBuy{1}
+		\item \PlusCoin{1}
+		\item 銀貨 1 枚を獲得する。
+		\item 馬 1 枚を獲得する。
+	\end{itemize}
+}[2020私家]
+\CardInfo{Sheepdog}{牧羊犬}{Cost=3,Type=アクション—リアクション,Color=リアクション}{
+	\Vanilla{card=2}
+	\hmbar
+	あなたがカード 1 枚を獲得するとき、手札から
+	これを使用してもよい。
+}
+\CardInfo{Snowy Village}{雪深い村}{Cost=3}{
+	\Vanilla{card=1,action=4,buy=1}
+	このターン、今後得る\PlusAct{}をすべて無視する。
+}
+\CardInfo{Stockpile}{備蓄品}{Cost=3,Type=財宝,MC=3}{
+	\Vanilla(3){buy=1}
+	これを追放する。
+}
+\CardInfo{Bounty Hunter}{賞金稼ぎ}{Cost=4}{
+	\Vanilla{action=1}
+	あなたの手札 1 枚を追放する。あなたの追放の中にそのカードと
+	同じカードがなかった場合、\PlusCoin{3}。
+}[2020HJ]
+\CardInfo{Cardinal}{枢機卿}{Cost=4,Type=アクション—アタック}{
+	\Vanilla{coin=2}
+	他のプレイヤーは全員、デッキの上から 2 枚を公開し、
+	その中のコストが\Coin{3}から\Coin{6}のカード 1 枚
+	を追放し、残りを捨札にする。
+}
+\CardInfo{Cavalry}{騎兵隊}[馬]{Cost=4,}{
+	馬 2 枚を獲得する。
+	\hmbar
+	これを獲得するとき、\PlusCard{2}、\PlusBuy{1}、
+	あなたの購入フェイズ中の場合、アクションフェイズ
+	に戻る。
+}
+\CardInfo{Groom}{馬丁}[馬]{Cost=4}{
+	コスト\Coin{4}以下のカード 1 枚を獲得する。
+	獲得したカードが……
+	\begin{itemize}
+		\item アクションカードの場合、馬 1 枚を獲得する。
+		\item 財宝カードの場合、銀貨 1 枚を獲得する。
+		\item 勝利点カードの場合、\PlusCard{1}、\PlusAct{1}。
+	\end{itemize}
+	（複数該当する場合、順に実行する）
+}
+\CardInfo{Hostelry}{旅籠}[馬]{Cost=4}{
+	\Vanilla{card=1,action=2}
+	\hmbar
+	これを獲得するとき、好きな枚数の財宝カードを
+	公開して捨札にしてもよい。そうした場合、同じ
+	枚数の馬を獲得する。
+}
+\CardInfo{Village Green}{村有緑地}{Cost=4,Type=アクション—持続—リアクション,Color=持続,ColorB=リアクション}{
+	現在またはあなたの次のターンの開始時に、
+	\Vanilla{card=1,action=2}
+	\hmbar
+	このカードをクリーンアップフェイズ以外の場面で
+	捨札にするとき、これを使用してもよい。
+}[2020私家]
+\CardInfo{Barge}{艀}+{Cost=5,Type=アクション—持続,Color=持続}{
+	現在またはあなたの次のターンの開始時に、
+	\Vanilla{card=3,buy=1}
+}
+\CardInfo{Coven}{魔女の集会}{Cost=5,Type=アクション—アタック}{
+	\Vanilla{action=1,coin=2}
+	他のプレイヤーは全員、サプライの呪い 1 枚を追放する。
+	追放できなかった場合、そのプレイヤーは追放している
+	呪いをすべて捨札にする。
+}
+\CardInfo{Displace}{強制退去}{Cost=5}{
+	あなたの手札 1 枚を追放する。それよりコストが最大\Coin{2}高い
+	名前の異なるカード 1 枚を獲得する。
+}
+\CardInfo{Falconer}{鷹匠}{Cost=5,Type=アクション—リアクション,Color=リアクション}{
+	これよりコストが少ないカード 1 枚をあなたの手札に獲得する。
+	\hmbar
+	誰かが種類（アクション、アタック等）を 2 つ以上持つ
+	カード 1 枚を獲得するとき、手札からこれを使用してもよい。
+}
+\CardInfo{Gatekeeper}{門番}{Cost=5,Type=アクション—持続—アタック,Color=持続}{
+	あなたの次のターン開始時に\PlusCoin{3}。それまでの間、
+	他のプレイヤーが自分の追放にないアクションカードまたは
+	財宝カード 1 枚を獲得するとき、そのプレイヤーはそれを
+	追放する。
+}
+\CardInfo{Hunting Lodge}{狩猟小屋}{Cost=5}{
+	\Vanilla{card=1,action=2}
+	あなたの手札をすべて捨札にしてもよい。そうした場合\PlusCard{5}。
+}
+\CardInfo{Kiln}{炉}+{Cost=5}{
+	\Vanilla{coin=2}
+	このターンあなたが次にカード 1 枚を使用するとき、先に
+	そのカードと同じカード 1 枚を獲得してもよい。
+}
+\CardInfo{Livery}{貸し馬屋}[馬]{Cost=5}{
+	\Vanilla{coin=3}
+	このターン、コスト\Coin{4}以上のカードを獲得するとき、
+	馬 1 枚を獲得する。
+}
+\CardInfo{Mastermind}{首謀者}{Cost=5,Type=アクション—持続,Color=持続}{
+	あなたの次のターンの開始時に、手札のアクションカード 1 枚
+	を 3 回使用してもよい。
+}[2020HJ]
+\CardInfo{Paddock}{パドック}[馬]{Cost=5}{
+	\Vanilla{coin=2}
+	馬 2 枚を獲得する。サプライの空の山札 1 つにつき
+	\PlusAct{1}。
+}
+\CardInfo{Sanctuary}{聖域}{Cost=5}{
+	\Vanilla{card=1,action=2,buy=1}
+	あなたの手札 1 枚を追放してもよい。
+}
+\CardInfo{Fisherman}{漁師}{CostA=\Coin{5}*,}{
+	\Vanilla{card=1,action=1,coin=1}
+	\hmbar
+	ターン中、ターンプレイヤーの捨札置き場にカードが 1 枚
+	もない場合、このカードのコストは\Coin{3}少なく
+	なる。
+}
+\CardInfo{Destrier}{デストリエ}{CostA=\Coin{6}*}{
+	\Vanilla{card=2,action=1}
+	\hmbar
+	ターン中、このカードのコストはそのターンにターンプレイヤー
+	が獲得したカード 1 枚につき\Coin{1}下がる。
+}
+\CardInfo{Wayfarer}{行人}{CostA=\Coin{6}*}{
+	\Vanilla{card=3}
+	銀貨 1 枚を獲得してもよい。
+	\hmbar
+	このカードのコストは、このターン誰かがカードを獲得して
+	いた場合、そのうち最後に獲得されたカード他のカードと
+	同じになる。
+}
+\CardInfo{Animal Fair}{動物見本市}{CostA=\Coin{7}*}{
+	\Vanilla{coin=3}
+	サプライの空の山札 1 つにつき、\PlusBuy{1}。
+	\hmbar
+	このカードのコストを支払う代わりに、あなたは手札のアクション
+	カード 1 枚を廃棄してもよい。
+}
+\CardInfo{Horse}{馬}+*{CostA=\Coin{3}*,Copy=30}{
+	\Vanilla{card=2,action=1}
+	これを馬の山札に戻す。
+}
+\end{document}

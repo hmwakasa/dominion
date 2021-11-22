@@ -1,0 +1,273 @@
+% +++
+% latex="texfot lualatex"
+% +++
+\documentclass{waku}
+\begin{document}
+\def\Expantion{帝国}\def\errata{2016}
+\CardInfo{Engineer}{技術者}{CostA=\Debt{4}}{
+	コスト\Coin{4}以下のカード 1 枚を獲得する。
+	これを廃棄してもよい。そうした場合、追加で
+	コスト\Coin{4}以下のカード 1 枚を獲得する。
+}
+\CardInfo{City Quarter}{市街}{CostA=\Debt{8}}{
+	\Vanilla{action=2}
+	あなたの手札を公開し、その中のアクションカード
+	1 枚につき\PlusCard{1}。
+}
+\CardInfo{Overlord}{大君主}{CostA=\Debt{8},Type=アクション—命令}{
+	サプライにあるコスト最大\Coin{5}までの
+	命令でないアクションカードを、そこに置いたまま
+	使用する。
+}[2019私家]
+\CardInfo{Royal Blacksmith}{王室の鍛冶屋}{CostA=\Debt{8}}{
+	\Vanilla{card=5}
+	あなたの手札を公開し、銅貨をすべて捨札にする。
+}
+\CardInfo{Encampment/Plunder}{陣地/鹵獲品}{Cost=2}{
+	\hmafont
+	この山札は上半分に陣地を 5 枚、下半分に鹵獲品
+	を 5 枚置いてゲームを始める。この山札の一番
+	上にあるカードだけが、獲得・購入可能。
+}[2017HJ]
+\CardInfo{Encampment}{陣地}{Cost=2,Copy=5}[このカードは陣地/鹵獲品の山札に由来する]{
+	\Vanilla{card=2,action=2}
+	あなたの手札から、金貨か鹵獲品を公開しても
+	よい。そうしなかった場合、これを脇に置き、
+	クリーンアップフェイズの開始時にサプライに
+	戻す。
+}
+\CardInfo{Plunder}{鹵獲品}{Cost=5,Type=財宝,MC=2,Copy=5}[このカードは陣地/鹵獲品の山札に由来する]{
+	\Vanilla(2){VP=1}
+}
+\CardInfo{Patrician/Emporium}{パトリキ/エンポリウム}{Cost=2}{
+	\hmafont
+	この山札は上半分にパトリキを 5 枚、下半分にエンポリウム
+	を 5 枚置いてゲームを始める。この山札の一番
+	上にあるカードだけが、獲得・購入可能。
+}[2017HJ]
+\CardInfo{Patrician}{パトリキ}{Cost=2,Copy=5}[このカードはパトリキ/エンポリウムの山札に由来する]{
+	\Vanilla{card=1,action=1}
+	あなたのデッキの一番上のカードを公開する。それが
+	コスト\Coin{5}以上の場合、あなたの手札に加える。
+}
+\CardInfo{Emporium}{エンポリウム}{Cost=5,Copy=5}[このカードはパトリキ/エンポリウムの山札に由来する]{
+	\Vanilla{card=1,action=1,coin=1}
+	\hmbar
+	これを獲得するとき、あなたの場に 5 枚以上の
+	アクションカードがある場合、\PlusVP{2}。
+}
+\CardInfo{Settlers/Bustling Village}{開拓者/騒がしい村}{Cost=2}{
+	\hmafont
+	この山札は上半分に開拓者を 5 枚、下半分に騒がしい村
+	を 5 枚置いてゲームを始める。この山札の一番
+	上にあるカードだけが、獲得・購入可能。
+}[2017HJ]
+\CardInfo{Settlers}{開拓者}{Cost=2,Copy=5}[このカードは開拓者/騒がしい村の山札に由来する]{
+	\Vanilla{card=1,action=1}
+	あなたの捨札をすべて見る。その中の銅貨 1 枚を
+	公開して手札に加えてもよい。
+}
+\CardInfo{Bustling Village}{騒がしい村}{Cost=5,Copy=5}[このカードは開拓者/騒がしい村の山札に由来する]{
+	\Vanilla{card=1,action=3}
+	あなたの捨札をすべて見る。その中の開拓者 1 枚を
+	公開して手札に加えてもよい。
+}
+\CardInfo{Castles}{城}+{Cost=3,Type=勝利点—城,Color=勝利点}{
+	\hmafont
+	城の山札はコストが多いカードが高いカードが下に
+	なるように並べ替えておく。
+	2 人戦では各 1 枚のみ用いる。一番上のカードのみ購入・獲得可能。
+}[2017HJ]
+\CardInfo{Humble Castle}{粗末な城}
+{Cost=3,Type=財宝—勝利点—城,Color=財宝,ColorB=勝利点,MC=1,Copy=2}[このカードは城の山札に由来する]{
+	\Vanilla(1){}
+	あなたの城 1 枚につき\VP[1]。
+}
+\CardInfo{Crumbling Castle}{崩れた城}
+{Cost=4,Type=勝利点—城,Color=勝利点,Copy=1}[このカードは城の山札に由来する]{
+	\Vanilla[1]{}
+	これを獲得または廃棄するとき、\PlusVP{1}、
+	そして銀貨 1 枚を獲得する。
+}
+\CardInfo{Small Castle}{小さい城}
+{Cost=5,Type=アクション—勝利点—城,Color=アクション,ColorB=勝利点,Copy=2}[このカードは城の山札に由来する]{
+	あなたの手札の城 1 枚またはこのカードを廃棄する。
+	そうした場合、城 1 枚を獲得する。
+	\hmbar
+	\Vanilla[2]{}
+}
+\CardInfo{Haunted Castle}{幽霊城}
+{Cost=6,Type=勝利点—城,Color=勝利点,Copy=1}[このカードは城の山札に由来する]{
+	\Vanilla[2]{}
+	\hmbar
+	あなたがこれをあなたのターンに獲得するとき、
+	金貨 1 枚を獲得し、手札が 5 枚以上の他のプレイヤー
+	は全員、自分の手札 2 枚を自分のデッキの上に置く。
+}
+\CardInfo{Opulent Castle}{華やかな城}
+{Cost=7,Type=アクション—勝利点—城,Color=アクション,ColorB=勝利点,Copy=2}[このカードは城の山札に由来する]{
+	好きな枚数の勝利点カードを公開して捨札にする。
+	捨札にしたカード 1 枚につき\PlusCoin{2}。
+	\hmbar
+	\Vanilla[3]{}
+}[2021私家]
+\CardInfo{Sprawling Castle}{広大な城}
+{Cost=8,Type=勝利点—城,Color=勝利点,Copy=1}[このカードは城の山札に由来する]{
+	\Vanilla[4]{}
+	\hmbar
+	これを獲得するとき、公領 1 枚か屋敷 3 枚を獲得する。
+}
+\CardInfo{Grand Castle}{壮大な城}
+{Cost=9,Type=勝利点—城,Color=勝利点,Copy=1}[このカードは城の山札に由来する]{
+	\Vanilla[5]{}
+	\hmbar
+	これを獲得するとき、あなたの手札を公開する。
+	あなたの手札と場の勝利点カード 1 枚につき\PlusVP{1}。
+}
+\CardInfo{King's Castle}{王城}
+{Cost=10,Type=勝利点—城,Color=勝利点,Copy=2}[このカードは城の山札に由来する]{
+	あなたの城 1 枚につき\VP[2]。
+}
+\CardInfo{Catapult/Rock}{投石機/石}{Cost=2,Type=アクション—アタック}{
+	\hmafont
+	この山札は上半分に投石機を 5 枚、下半分に石
+	を 5 枚置いてゲームを始める。この山札の一番
+	上にあるカードだけが、獲得・購入可能。
+}[2017HJ]
+\CardInfo{Catapult}{投石機}{Cost=3,Type=アクション—アタック,Copy=5}[このカードは投石機/石の山札に由来する]{
+	\Vanilla{coin=1}
+	あなたの手札 1 枚を廃棄する。それが……
+	\begin{itemize}
+		\item コスト\Coin{3}以上の場合、他のプレイヤーは全員、
+			呪いを獲得する。
+		\item 財宝カードの場合、他のプレイヤーは全員、手札が
+			3 枚になるように捨札をする。
+	\end{itemize}
+}[2017私家]
+\CardInfo{Rock}{石}+{Cost=4,Type=財宝,MC=1,Copy=5}[このカードは投石機/石の山札に由来する]{
+	\Vanilla(1){}
+	\hmbar
+	これを獲得または廃棄したとき、あなたの購入フェイズである場合は
+	銀貨 1 枚をあなたのデッキの上に獲得し、それ以外の場合は銀貨
+	1 枚を手札に獲得する。
+}[2019私家]
+\CardInfo{Chariot Race}{戦車競走}{Cost=3}{
+	\Vanilla{action=1}
+	あなたのデッキの一番上のカードを公開し、手札に加える。左隣
+	のプレイヤーは自分のデッキの一番上のカードを公開する。あなた
+	のカードのほうがコストが高い場合、\PlusCoin{1}、\PlusVP{1}。
+}
+\CardInfo{Enchantress}{女魔術師}{Cost=3,Type=アクション—アタック—持続,Color=持続}{
+	あなたの次のターンまで、他のプレイヤーが自分のターン最初
+	のアクションカードを使用するとき、そのプレイヤーはその
+	指示の代わりに、\PlusCard{1}、\PlusAct{1}を得る。あなたの
+	次のターンの開始時に\PlusCard{2}。
+}
+\CardInfo{Farmers' Market}{農家の市場}{Cost=3,Type=アクション—集合}{
+	\Vanilla{buy=1}
+	農家の市場の山札に\VP[4]以上ある場合、\VP をすべて得て
+	これを廃棄する。そうでない場合、農家の市場の山札に\VP[1]を
+	追加し、その後、農家の市場の山札に置かれている\VP[1]につき
+	\PlusCoin{1}。
+}[2019私家]
+\CardInfo{Gladiator/Fortune}{剣闘士/大金}{Cost=2}{
+	\hmafont
+	この山札は上半分に剣闘士を 5 枚、下半分に大金
+	を 5 枚置いてゲームを始める。この山札の一番
+	上にあるカードだけが、獲得・購入可能。
+}[2017HJ]
+\CardInfo{Gladiator}{剣闘士}{Cost=3,Copy=5}[このカードは剣闘士/大金の山札に由来する]{
+	\Vanilla{coin=2}
+	あなたの手札 1 枚を公開する。左隣のプレイヤーは同じカード
+	を自分の手札から公開してもよい。公開しなかった場合、\PlusCoin{1}、
+	そしてサプライの剣闘士 1 枚を廃棄する。
+}
+\CardInfo{Fortune}{大金}{CostA=\Coin{8}\Debt{8},Type=財宝,MC=\(\times\text{2}\),Copy=5}
+[このカードは剣闘士/大金の山札に由来する]{
+	\Vanilla{buy=1}
+	これがこのターンに使用した最初の大金である場合、
+	あなたの\Coin{}を倍にする
+	（現在の所持\Coin{}と同じ\Coin{}を得る）。
+	\hmbar
+	これを獲得するとき、あなたの場の剣闘士 1 枚につき
+	金貨 1 枚を獲得する。
+}[2017私家]
+\CardInfo{Sacrifice}{生贄}{Cost=4}{
+	あなたの手札 1 枚を廃棄する。そのカードが……
+	\begin{itemize}
+		\item アクションカードの場合、\PlusCard{2}、
+			\PlusAct{2}。
+		\item 財宝カードの場合、\PlusCoin{2}。
+		\item 勝利点カードの場合、\PlusVP{2}。
+	\end{itemize}
+}
+\CardInfo{Temple}{神殿}{Cost=4,Type=アクション—集合}{
+	\Vanilla{VP=1}
+	あなたの手札から 1 〜 3 枚の名前の異なるカード
+	を廃棄する。神殿の山札の上に\VP[1]を追加する。
+	\hmbar
+	これを獲得するとき、神殿の山札の上の\VP をすべて
+	得る。
+}
+\CardInfo{Villa}{ヴィラ}{Cost=4}{
+	\Vanilla{action=2,buy=1,coin=1}
+	\hmbar
+	これを獲得するとき、これを手札に加え、\PlusAct{1}。
+	あなたの購入フェイズ中の場合、アクションフェイズに戻る。
+}
+\CardInfo{Archive}{資料庫}{Cost=5,Type=アクション—持続,Color=持続}{
+	\Vanilla{action=1}
+	あなたのデッキの上から 3 枚を伏せて脇に置く
+	（あなたはこれらのカードを見てもよい）。
+	現在と、あなたの次の 2 ターンの開始時に、
+	その中の 1 枚をあなたの手札に加える。
+}
+\CardInfo{Capital}{元手}{Cost=5,Type=財宝,MC=6}{
+	\Vanilla(6){buy=1}
+	\hmbar
+	これをあなたの場から捨札にするとき、\Debt{6}を得る。
+	その後\Debt{}の返済をしてもよい。
+}
+\CardInfo{Charm}{御守り}{Cost=5,Type=財宝,MC=?}{
+	次のうちの 1 つを選ぶ。
+	\begin{itemize}
+		\item \PlusCoin{2}、\PlusBuy{1}。
+		\item このターン、次にカード 1 枚を購入するとき、
+			それと同じコストで名前の異なるカード 1 枚を
+			獲得してもよい。
+	\end{itemize}
+}
+\CardInfo{Crown}{冠}+{Cost=5,Type=アクション—財宝,Color=アクション,ColorB=財宝}{
+	あなたのアクションフェイズ中の場合、あなたの
+	手札のアクションカード 1 枚を 2 回使用してもよい。
+	あなたの購入フェイズ中の場合、あなたの手札の
+	財宝カード 1 枚を 2 回使用してもよい。
+}
+\CardInfo{Forum}{公共広場}{Cost=5}{
+	\Vanilla{card=3,action=1}
+	あなたの手札を 2 枚捨札にする。
+	\hmbar
+	これを購入するとき、\PlusBuy{1}。
+}
+\CardInfo{Groundskeeper}{庭師}{Cost=5}{
+	\Vanilla{card=1,action=1}
+	\hmbar
+	これがあなたの場に出ている限り、あなたが勝利点
+	カード 1 枚を獲得するとき、\PlusVP{1}。
+}
+\CardInfo{Legionary}{軍団兵}{Cost=5,Type=アクション—アタック}{
+	\Vanilla{coin=3}
+	あなたの手札から金貨 1 枚を公開してもよい。
+	そうした場合、他のプレイヤーは全員、手札が 2 枚
+	になるように捨札にし、その後カードを 1 枚引く。
+}
+\CardInfo{Wild Hunt}{ワイルドハント}{Cost=5,Type=アクション—集合}{
+	次のうち 1 つを選ぶ。
+	\begin{itemize}
+		\item \PlusCard{3}。ワイルドハントの山札の上に
+			\VP[1]を追加する。
+		\item 屋敷を獲得する。獲得した場合、ワイルドハント
+			の山札の上の\VP をすべて得る。
+	\end{itemize}
+}
+\end{document}

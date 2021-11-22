@@ -1,0 +1,150 @@
+% +++
+% latex="texfot lualatex"
+% +++
+\documentclass{waku}
+\begin{document}
+\def\Expantion{ルネサンス}\def\errata{2019}
+\CardInfo{Border Gurd}{国境警備隊}[ランタン, 角笛]{Cost=2,}{
+	\Vanilla{action=1}
+	あなたのデッキの上から 2 枚のカードを公開する。
+	そのうち片方をあなたの手札に加え、残りを捨て札にする。
+	両方がアクションカードの場合、ランタンか角笛を取る。
+}[2020HJ]
+\CardInfo{Ducat}{ドゥカート金貨}{Cost=2,Type=財宝}{
+	\Vanilla{coffer=1,buy=1}
+	\hmbar
+	これを獲得するとき、手札の銅貨 1 枚を廃棄してもよい。
+}
+\CardInfo{Lackeys}{追従者}{Cost=2,}{
+	\Vanilla{card=2}
+	\hmbar
+	これを獲得するとき、\PlusVillager{2}。
+}
+\CardInfo{Acting Troupe}{劇団}{Cost=3,}{
+	\Vanilla{villager=4}
+	これを廃棄する。
+}
+\CardInfo{Cargo Ship}{貨物船}{Cost=3,Type=アクション—持続,Color=持続}{
+	\Vanilla{coin=2}
+	あなたがこのターンに獲得するカードのうち 1 枚を、
+	（このカードの）脇に表向きに置いてもよい。あなたの
+	次のターンの開始時に、それをあなたの手札に加える。
+}
+\CardInfo{Experiment}{実験}{Cost=3,}{
+	\Vanilla{card=2,action=1}
+	これをサプライに戻す。
+	\hmbar
+	これを獲得するとき、追加で実験 1 枚を獲得する（その
+	実験は追加の実験を獲得させない）。
+}
+\CardInfo{Improve}{増築}{Cost=3,}{
+	\Vanilla{coin=2}
+	クリーンアップフェイズの開始時に、あなたはこの
+	ターンに場から捨て札にするアクションカード 1 枚を
+	廃棄してもよい。そうした場合、それよりコスト
+	が\Coin{1}高いカード 1 枚を獲得する。
+}
+\CardInfo{Flag Bearer}{旗手}[旗]{Cost=4,}{
+	\Vanilla{coin=2}
+	\hmbar
+	これを獲得または廃棄するとき、旗を取る。
+}
+\CardInfo{Hideout}{根城}{Cost=4,}{
+	\Vanilla{card=1,action=2}
+	あなたの手札 1 枚を廃棄する。それが勝利点カードの場合、
+	呪い 1 枚を獲得する。
+}
+\CardInfo{Inventor}{発明家}{Cost=4,}{
+	コスト\Coin{4}以下のカード 1 枚を獲得する。この
+	ターン、（サプライ以外も含めた）すべてのカードの
+	コストは\Coin{1}下がる。
+}
+\CardInfo{Mountain Village}{山村}{Cost=4,}{
+	\Vanilla{action=2}
+	あなたの捨札をすべて見て、その中の 1 枚をあなたの手札
+	に加える。手札に加えられない場合、\PlusCard{1}。
+}
+\CardInfo{Patron}{パトロン}{Cost=4,Type=アクション—リアクション,Color=リアクション,}{
+	\Vanilla{villager=1,coin=2}
+	\hmbar
+	アクションフェイズ中、これが公開されるとき、\PlusCoffer{1}
+	（「公開する」という語が用いられている必要がある）。
+}[2021私家]
+\CardInfo{Priest}{司祭}{Cost=4,}{
+	\Vanilla{coin=2}
+	あなたの手札 1 枚を廃棄する。その後、このターンの間、
+	あなたがカードを 1 枚を廃棄するとき、\PlusCoin{2}。
+}[2020HJ]
+\CardInfo{Research}{研究}{Cost=4,Type=アクション—持続,Color=持続}{
+	\Vanilla{action=1}
+	あなたの手札 1 枚を廃棄する。そのコスト\Coin{1}につき 1 枚、
+	あなたのデッキの上のカードを（このカードの）脇に伏せて置く。
+	あなたの次のターンの開始時に、それらをあなたの手札に加える。
+}
+\CardInfo{Silk Merchant}{絹商人}{Cost=4,}{
+	\Vanilla{card=2,buy=1}
+	\hmbar
+	これを獲得または廃棄するとき、\PlusVillager{1}、
+	\PlusCoffer{1}。
+}
+\CardInfo{Old Witch}{老魔女}{Cost=5,Type=アクション—アタック}{
+	\Vanilla{card=3}
+	他のプレイヤーは全員、呪い 1 枚を獲得する。その後、
+	他のプレイヤーは全員、手札の呪い 1 枚を廃棄してもよい。
+}
+\CardInfo{Recruiter}{徴募官}{Cost=5,}{
+	\Vanilla{card=2}
+	あなたの手札 1 枚を廃棄する。そのコスト\Coin{1}につき
+	\PlusVillager{1}。
+}
+\CardInfo{Scepter}{王笏}{Cost=5,Type=財宝,MC=?}{
+	次のうち 1 つを選ぶ:
+	\begin{itemize}
+		\item \PlusCoin{2}
+		\item このターンにあなたが使用した、場に残っている
+			アクションカード 1 枚を再使用する。
+	\end{itemize}
+}
+\CardInfo{Scholar}{学者}{Cost=5,}{
+	あなたの手札をすべて捨てる。
+	\Vanilla{card=7}
+}
+\CardInfo{Sculptor}{彫刻家}{Cost=5}{
+	コスト\Coin{4}以下のカード 1 枚をあなたの手札に獲得する。
+	それが財宝カードの場合、\PlusVillager{1}。
+}
+\CardInfo{Seer}{先見者}{Cost=5}{
+	\Vanilla{card=1,action=1}
+	あなたのデッキの上から 3 枚を公開する。その中から
+	コスト\Coin{2}から\Coin{4}のカードをあなたの手札に加える。
+	残りを好きな順番でデッキに戻す。
+}
+\CardInfo{Spices}{香辛料}{Cost=5,Type=財宝,MC=2}{
+	\Vanilla(2){buy=1}
+	\hmbar
+	これを獲得するとき、\PlusCoffer{2}。
+}
+\CardInfo{Swashbuckler}{剣客}[宝箱]{Cost=5}{
+	\Vanilla{card=3}
+	あなたの捨札にカードがある場合:
+	\begin{quote}
+		\PlusCoffer{1}、4 枚以上財源トークンを所持
+		している場合、宝箱を取る。
+	\end{quote}
+}
+\CardInfo{Treasurer}{出納官}[鍵]{Cost=5}{
+	\Vanilla{coin=3}
+	次のうち 1 つを選ぶ:
+	\begin{itemize}
+		\item あなたの手札の財宝カード 1 枚を廃棄する。
+		\item 廃棄置き場の財宝カード 1 枚をあなたの手札に獲得する。
+		\item 鍵を取る。
+	\end{itemize}
+}
+\CardInfo{Villain}{悪党}{Cost=5,Type=アクション—アタック}{
+	\Vanilla{coffer=2}
+	手札が 5 枚以上の他のプレイヤーは全員、
+	コスト\Coin{2}以上のカード 1 枚を捨札にする
+	（ない場合、手札を公開する）。
+}
+\end{document}
