@@ -332,13 +332,14 @@
 		% カード名横
 		\path(SN)node[anchor=south west,rotate=-90,inner ysep=.25mm,font=\hmsfont]
 			{\hminwidth*{31mm}{%
+				\ltjsetparameter{autoxspacing=false}%
 				\fontsize{4mm}{0}\selectfont%
 				\ifthenelse{\boolean{issuply}}{★}{}%
 				\ifthenelse{\boolean{ispile}}{☆}{}%
 				\CardNameJA%
 				\fontsize{2.5mm}{0}\color{darkgray}\selectfont%
 				\ifthenelse{\isundefined{\Copy}}{}{/\Copy 枚}%
-				\ifthenelse{\isundefined{\AdditionalCard}}{}{{\fontspec{nishiki-teki}➧}\AdditionalCard}%
+				\ifthenelse{\isundefined{\AdditionalCard}}{}{{\fontspec{nishiki-teki}🠾}\AdditionalCard}%
 			}};
 		% コスト横
 		\path(SC)node[anchor=south east,rotate=-90,inner ysep=.25mm,font=\fontsize{3.5mm}{0}\selectfont]
@@ -363,22 +364,19 @@
 }}
 
 \define@cmdkeys{info-l}[]{Cost,CostA,Type,Expantion,Artwork,Copy}
-\NewDocumentCommand\LandscapeInfo{m m t+ s o m +o +m o}{{%
+\NewDocumentCommand\LandscapeInfo{m m t+ o d() m +m o}{{%
 	\newcommand{\CardNameEN}{#1}%
 	\newcommand{\CardNameJA}{#2}%
 	\newboolean{shortname}\setboolean{shortname}{false}%
-	\newboolean{issuply}\setboolean{issuply}{false}%
-	\newboolean{ispile}\setboolean{ispile}{false}%
 	\IfBooleanT{#3}{\setboolean{shortname}{true}}%
-	\IfBooleanT{#4}{\setboolean{issuply}{true}}%
-	\IfValueT{#5}{\newcommand{\AdditionalCard}{#5}}%
+	\IfValueT{#4}{\newcommand{\AdditionalCard}{#4}}%
+	\IfValueT{#5}{\newcommand{\FromCard}{#5}}%
 	\setkeys{info-l}{#6}%
 	\ifthenelse{\isundefined{\Cost}}{}{\def\CostA{\Coin{\Cost}}}%
 	\ifthenelse{\isundefined{\Color}}{\def\Color{\Type}}{}%
 	\providecommand{\Artwork}{test-l.pdf}%
-	\IfValueT{#7}{\setboolean{ispile}{true}\newcommand{\Alert}{#7}}%
-	\newcommand{\Text}{#8}%
-	\IfValueT{#9}{\def\errata{#9}}%
+	\newcommand{\Text}{#7}%
+	\IfValueT{#8}{\def\errata{#8}}%
 	\begin{tikzpicture}[x=1mm,y=1mm]
 		\setlength{\parindent}{1\zw}
 		% 座標
@@ -425,13 +423,14 @@
 		% カード名横
 		\path(SN)node[anchor=south west,inner ysep=.25mm,font=\hmsfont]
 			{\hminwidth*{31mm}{%
+				\ltjsetparameter{autoxspacing=false}%
 				\fontsize{4mm}{0}\selectfont%
-				\ifthenelse{\boolean{issuply}}{★}{}%
-				\ifthenelse{\boolean{ispile}}{☆}{}%
+				◎%
 				\CardNameJA%
 				\fontsize{2.5mm}{0}\color{darkgray}\selectfont%
 				\ifthenelse{\isundefined{\Copy}}{}{/\Copy 枚}%
-				\ifthenelse{\isundefined{\AdditionalCard}}{}{{\fontspec{nishiki-teki}➧}\AdditionalCard}%
+				\ifthenelse{\isundefined{\AdditionalCard}}{}{{\fontspec{nishiki-teki}🠾}\AdditionalCard}%
+				\ifthenelse{\isundefined{\FromCard}}{}{\<（{\fontspec{nishiki-teki}🠼}\FromCard ）\<}%
 			}};
 		% コスト横
 		\ifthenelse{\isundefined{\CostA}}{}{
