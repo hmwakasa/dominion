@@ -1,37 +1,60 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{waku}[2021/11/19]
 
-\LoadClass[
-	jafontsize=2.5mm,
-	baselineskip=1.1zh,
-	line_length=63mm,
-	cmyk,
-	paper={63mm,88mm},
-	gutter=0pt,
-	head_space=0pt,
-	foot_space=0pt,
-	fore-edge=0pt,
-	open_bracket_pos=nibu_tentsuki,
-	hanging_punctuation,
-]{jlreq}
+\newif\iflandscape\landscapefalse
+\DeclareOption{landscape}{\landscapetrue}
+\ProcessOptions\relax
+\newif\ifgrid\gridfalse
+\DeclareOption{grid}{\gridtrue}
+\ProcessOptions\relax
 
-\usepackage[dvipsnames]{xcolor}
+\iflandscape
+	\LoadClass[
+		jafontsize=2.5mm,
+		baselineskip=1.1zh,
+		line_length=88mm,
+		cmyk,
+		paper={88mm,63mm},
+		gutter=0pt,
+		head_space=0pt,
+		foot_space=0pt,
+		fore-edge=0pt,
+		open_bracket_pos=nibu_tentsuki,
+		hanging_punctuation,
+	]{jlreq}
+\else
+	\LoadClass[
+		jafontsize=2.5mm,
+		baselineskip=1.1zh,
+		line_length=63mm,
+		cmyk,
+		paper={63mm,88mm},
+		gutter=0pt,
+		head_space=0pt,
+		foot_space=0pt,
+		fore-edge=0pt,
+		open_bracket_pos=nibu_tentsuki,
+		hanging_punctuation,
+	]{jlreq}
+\fi
 
-\usepackage{luatexja,xparse,fontspec,bxokumacro,bxghost,ifthen,xkeyval}
-\usepackage{amsmath}
+\RequirePackage[dvipsnames]{xcolor}
+
+\RequirePackage{luatexja,xparse,fontspec,bxokumacro,bxghost,ifthen,xkeyval}
+\RequirePackage{amsmath}
 \ltjsetparameter{jacharrange={-3,-8}}
-\usepackage[no-math,match,deluxe]{luatexja-preset}
-\usepackage[x-1a]{pdfx}
+\RequirePackage[no-math,match,deluxe]{luatexja-preset}
+\RequirePackage[x-1a]{pdfx}
 
-\usepackage[pdfbox]{gentombow}
+\RequirePackage[pdfbox]{gentombow}
 \settombowbleed{3mm}
 
-\usepackage{tikz}
+\RequirePackage{tikz}
 \usetikzlibrary{calc,fadings,patterns,arrows.meta,shapes.symbols}
 \setlength{\parskip}{0pt}
-\usepackage[export]{adjustbox}
+\RequirePackage[export]{adjustbox}
 
-\usepackage{luacode}
+\RequirePackage{luacode}
 %% \PUACHAR{«num»}
 % コードポイントが num である文字を出力する
 \begin{luacode*}
@@ -80,7 +103,7 @@
 
 \renewcommand{\labelitemi}{\fontspec{nishiki-teki}\ltjalchar`▶︎}
 
-\usepackage{pdfrender}
+\RequirePackage{pdfrender}
 \NewDocumentCommand\hmfukuro{O{.2pt} +m O{white}}{\textpdfrender{
 	TextRenderingMode=FillStroke,
 	LineWidth=#1,
@@ -117,8 +140,16 @@
 \colorlet{避難所}{WildStrawberry}
 \colorlet{廃墟}{Peach}
 \colorlet{リザーブ}{Apricot}
-\colorlet{家宝}{Goldenrod}
 \colorlet{夜行}{Gray}
+\colorlet{イベント}{lightgray}
+\colorlet{ランドマーク}{olive}
+\colorlet{祝福}{yellow}
+\colorlet{呪詛}{Thistle}
+\colorlet{状態}{pink}
+\colorlet{アーティファクト}{Tan}
+\colorlet{プロジェクト}{Lavender}
+\colorlet{習性}{CornflowerBlue}
+\colorlet{家宝}{Goldenrod}
 \colorlet{基本}{OliveGreen}
 \colorlet{基本2nd}{OliveGreen}
 \colorlet{陰謀}{ForestGreen}
@@ -321,13 +352,108 @@
 		\path(Y4)node[anchor=south east,inner sep=.25mm]{\tiny\errata};
 		% 方眼
 		\draw[thin]($(OLE1)+(0,2)$)--($(OLE4)+(0,-3)$);
-		%\draw[very thin,gridcolor,nearly transparent](OOOO)grid[step=1](OL3);
-		%\draw[thin,gridcolor,nearly transparent](OOOO)grid[step=10](OL3);
-		%\draw[thin,gridcolor,nearly transparent](OL1)rectangle(OL3);
-		%\draw[thin,gridcolor,nearly transparent](OLE1)rectangle(OLE4);
+		\ifgrid
+			\draw[very thin,gridcolor,nearly transparent](OOOO)grid[step=1](OL3);
+			\draw[thin,gridcolor,nearly transparent](OOOO)grid[step=10](OL3);
+			\draw[thin,gridcolor,nearly transparent](OL1)rectangle(OL3);
+			\draw[thin,gridcolor,nearly transparent](OLE1)rectangle(OLE4);
+		\fi
 	\end{tikzpicture}%
 	\pagebreak
 }}
 
+\define@cmdkeys{info-l}[]{Cost,CostA,Type,Expantion,Artwork,Copy}
+\NewDocumentCommand\LandscapeInfo{m m t+ s o m +o +m o}{{%
+	\newcommand{\CardNameEN}{#1}%
+	\newcommand{\CardNameJA}{#2}%
+	\newboolean{shortname}\setboolean{shortname}{false}%
+	\newboolean{issuply}\setboolean{issuply}{false}%
+	\newboolean{ispile}\setboolean{ispile}{false}%
+	\IfBooleanT{#3}{\setboolean{shortname}{true}}%
+	\IfBooleanT{#4}{\setboolean{issuply}{true}}%
+	\IfValueT{#5}{\newcommand{\AdditionalCard}{#5}}%
+	\setkeys{info-l}{#6}%
+	\ifthenelse{\isundefined{\Cost}}{}{\def\CostA{\Coin{\Cost}}}%
+	\ifthenelse{\isundefined{\Color}}{\def\Color{\Type}}{}%
+	\providecommand{\Artwork}{test-l.pdf}%
+	\IfValueT{#7}{\setboolean{ispile}{true}\newcommand{\Alert}{#7}}%
+	\newcommand{\Text}{#8}%
+	\IfValueT{#9}{\def\errata{#9}}%
+	\begin{tikzpicture}[x=1mm,y=1mm]
+		\setlength{\parindent}{1\zw}
+		% 座標
+		\coordinate(OL1)at(0,63);\coordinate(OL3)at(88,0);
+		\coordinate(OLE1)at(-1,58);\coordinate(OOOO)at(-1,63);
+		\coordinate(OLE4)at(OLE1-|OL3);
+		\coordinate(OOL1)at($(OL1)+(3,3)-(0,.71pt)$);
+		\coordinate(OOL3)at($(OL3)-(3,3)-(0,.71pt)$);
+		\coordinate(N3)at(18,45);\coordinate(NE1)at(70,55);\coordinate(NJ1)at(70,52);
+		\coordinate(NE3)at(NJ1-|N3);\coordinate(NE2)at(NE1-|N3);
+		\coordinate(A1)at(84,48);\coordinate(T1)at(84,28);\coordinate(T3)at(4,3);
+		\coordinate(A3)at(T1-|T3);\coordinate(A2)at(A1-|A3);\coordinate(T4)at(T1|-T3);
+		\coordinate(CB)at($(A2)+(-1,0)$);
+		\coordinate(Y1)at(71,50);\coordinate(Y2)at(86,35);
+		\coordinate(SE)at(11,58);\coordinate(SN)at(SE);
+		\coordinate(SC)at(49,58);\coordinate(SY)at(SC);
+		\coordinate(SYC1)at($(SY)+(10,8)$);
+		% 外枠
+		\useasboundingbox(OL1)rectangle(OL3);
+		% イラスト、タイプ
+		\draw[path picture={\node at (path picture bounding box.center)
+			{\includegraphics[width=80mm,height=20mm,keepaspectratio,min size={80mm}{20mm},clip]{\Artwork}};
+			\draw[black,line width=3mm+1pt](Y1)--(Y2);
+			\draw[\Color,line width=3mm](Y1)--(Y2)node[midway,sloped,font=\hmnfont,color=black]{\hminwidth*{10mm}{\Type}};
+		}](A1)-|(A3)-|cycle;
+		% カード名
+		\filldraw[fill=\Color](N3)rectangle(NE1);
+		\path(N3)--(NJ1)node[midway,font=\hmnfont\fontsize{6mm}{0}\selectfont]
+			{\hminwidth{48mm}{\ifthenelse{\boolean{shortname}}{　\CardNameJA　}{\CardNameJA}}};
+		\path(NE3)--(NE1)node[midway,font=\hmnfont]{\CardNameEN};
+		% テキスト
+		\filldraw[fill=\Color](T3)rectangle(T1);
+		\path(T1)--(T3)node
+			[midway,anchor=center,outer sep=0,inner sep=1mm,text width=47.5mm,text justified,color=black]{
+				\Text
+			};
+		% コスト
+		\ifthenelse{\isundefined{\CostA}}{}
+			{\path(CB)node[anchor=west,inner sep=0pt,font=\fontsize{5.4mm}{0}\selectfont]{\CostA};}
+		% 拡張
+		\fill[fill=\Expantion]($(OOOO)+(-2,3)$)rectangle(SE)
+			node[anchor=south east,inner ysep=.25mm,font=\hmsefont\fontsize{4mm}{0}\selectfont]
+			{\hminwidth{8mm}{\hmfukuro{\Expantion}}};
+		% カード名横
+		\path(SN)node[anchor=south west,inner ysep=.25mm,font=\hmsfont]
+			{\hminwidth*{31mm}{%
+				\fontsize{4mm}{0}\selectfont%
+				\ifthenelse{\boolean{issuply}}{★}{}%
+				\ifthenelse{\boolean{ispile}}{☆}{}%
+				\CardNameJA%
+				\fontsize{2.5mm}{0}\color{darkgray}\selectfont%
+				\ifthenelse{\isundefined{\Copy}}{}{/\Copy 枚}%
+				\ifthenelse{\isundefined{\AdditionalCard}}{}{{\fontspec{nishiki-teki}➧}\AdditionalCard}%
+			}};
+		% コスト横
+		\ifthenelse{\isundefined{\CostA}}{}{
+			\path(SC)node[anchor=south east,inner ysep=.25mm,font=\fontsize{3.5mm}{0}\selectfont]
+				{\CostA};
+		}
+		% タイプ横
+		\fill[\Color](SY)rectangle(SYC1);
+		\path(SY)node[anchor=south west,inner ysep=.25mm,font=\hmsfont\color{blue}]
+			{\hminwidth*{35mm}{\Type}};
+		% エラッタ年度
+		\path(T4)node[anchor=south east,inner sep=.25mm]{\tiny\errata};
+		% 方眼
+		\draw[thin]($(OLE1)+(-2,0)$)--($(OLE4)+(3,0)$);
+		\ifgrid
+			\draw[very thin,gridcolor,nearly transparent](OOOO)grid[step=1](OL3);
+			\draw[thin,gridcolor,nearly transparent](OOOO)grid[step=10](OL3);
+			\draw[thin,gridcolor,nearly transparent](OL1)rectangle(OL3);
+			\draw[thin,gridcolor,nearly transparent](OLE1)rectangle(OLE4);
+		\fi
+	\end{tikzpicture}%
+	\pagebreak
+}}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
