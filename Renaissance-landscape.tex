@@ -1,0 +1,107 @@
+% +++
+% latex="texfot lualatex"
+% +++
+\documentclass[landscape]{waku}
+\begin{document}
+\def\Expantion{ルネサンス}\def\errata{2019}
+\def\Type{アーティファクト}
+\LandscapeInfo{Flag}{旗}+(旗手)*{}{
+	あなたの手札を引き直すとき、\PlusCard{1}。
+}[2020HJ]
+\LandscapeInfo{Horn}{角笛}(国境警備隊)*{}{
+	1 ターンに 1 回のみ、あなたが場から国境警備隊を
+	捨札にするとき、それをデッキの一番上に置いてもよい。
+}
+\LandscapeInfo{Key}{鍵}+(出納官)*{}{
+	あなたのターン開始時に \PlusCoin{1}。
+}
+\LandscapeInfo{Lantern}{ランタン}+(国境警備隊)*{}{
+	あなたの使用する国境警備隊は、カードを 3 枚
+	公開し、2 枚を捨札にする。（3 枚ともアクション
+	カードの場合は角笛を得る。
+}[2019私家]
+\LandscapeInfo{Treasure Chest}{宝箱}(剣客)*{}{
+	あなたの購入フェイズの開始時に、金貨 1 枚を獲得する。
+}
+\def\Type{プロジェクト}
+\LandscapeInfo{Cathedral}{大聖堂}{Cost=3}{
+	あなたのターンの開始時に、あなたの手札 1 枚を廃棄する。
+}
+\LandscapeInfo{City Gate}{城門}{Cost=3}{
+	あなたのターンの開始時に、\PlusCard{1}。その後
+	あなたの手札 1 枚をデッキの一番上に置く。
+}
+\LandscapeInfo{Pageant}{野外劇}{Cost=3}{
+	あなたの購入フェイズの終了時に、\Coin{1} を払って
+	\PlusCoffer{1} を得てもよい。
+}
+\LandscapeInfo{Sewers}{下水道}{Cost=3}{
+	あなたがこの効果以外でカード 1 枚を廃棄するとき、
+	追加であなたの手札 1 枚を廃棄してもよい。
+}
+\LandscapeInfo{Star Chart}{星図}{Cost=3}{
+	あなたがデッキをシャッフルするとき、その中の 1 枚を
+	選んでその一番上に置いてもよい。（シャッフルする
+	カードをすべて見て一番上に置くカードを決めて、その
+	時にシャッフルされない残りのデッキのカードを見てもよい）
+}[2021私家]
+\LandscapeInfo{Exploration}{探査}{Cost=4}{
+	あなたの購入フェイズの終了時、その購入フェイズで
+	何もカードを購入していない場合、\PlusCoffer{1}、
+	\PlusVillager{1}。
+}[2021私家]
+\LandscapeInfo{Fair}{縁日}{Cost=4}{
+	あなたの購入フェイズの開始時、\PlusBuy{1}。
+}
+\LandscapeInfo{Silos}{サイロ}{Cost=4}{
+	あなたのターンの開始時に、好きな枚数の銅貨を公開して
+	捨札にし、同じ枚数のカードを引く。
+}
+\LandscapeInfo{Sinister Plot}{悪巧み}{Cost=4}{
+	あなたのターンの開始時に、ここにあなたのトークンを 1 個
+	加える、または、ここにあるあなたのトークンすべてを取り除き、
+	取り除いたトークン 1 個につき\PlusCard{1}。
+}[2021私家]
+\LandscapeInfo{Academy}{学園}{Cost=5}{
+	あなたがアクションカード 1 枚を獲得するとき、\PlusVillager{1}。
+}
+\LandscapeInfo{Capitalism}{資本主義}{Cost=5}{
+	あなたのターン中、指示文に「\PlusCoin{}」と書いてある
+	アクションカードは、財宝カードでもある。
+}
+\LandscapeInfo{Fleet}{艦隊}{Cost=5}{
+	ゲーム終了時、これを持つプレイヤーのみ、追加で 1ターン
+	を得る。
+}
+\LandscapeInfo{Guildhall}{ギルド集会所}{Cost=5}{
+	あなたが財宝カード 1 枚を獲得するとき、\PlusCoffer{1}。
+}
+\LandscapeInfo{Piazza}{ピアッツァ}{Cost=5}{
+	あなたのターンの開始時に、デッキの一番上のカード
+	を公開する。それがアクションカードの場合、それを
+	使用する。
+}
+\LandscapeInfo{Road Network}{道路網}{Cost=5}{
+	他のプレイヤーが勝利点カード 1 枚を獲得するとき、
+	\PlusCard{1}。
+}
+\LandscapeInfo{Barracks}{兵舎}{Cost=6}{
+	あなたのターンの開始時に、\PlusAct{1}。
+}
+\LandscapeInfo{Crop Rotation}{輪作}{Cost=6}{
+	あなたのターンの開始時に、勝利点カード 1 枚を捨札に
+	してもよい。そうした場合、\PlusCard{2}。
+}
+\LandscapeInfo{Innovation}{技術革新}{Cost=6}{
+	あなたのターン中、最初にアクションカードを獲得する
+	とき、そのカードを使用してもよい。（カードを場に
+	出せない限り使用できない）
+}[2021私家]
+\LandscapeInfo{Canal}{運河}{Cost=7}{
+	あなたのターン中、カードのコストは\Coin{1}下がる。
+}
+\LandscapeInfo{Citadel}{山砦}{Cost=8}{
+	あなたのターン中、最初にアクションカードを使用する
+	ときは、そのカードを 1 回ではなく 2 回使用する。
+}[2021私家]
+\end{document}

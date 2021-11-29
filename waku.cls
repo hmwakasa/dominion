@@ -363,20 +363,22 @@
 	\pagebreak
 }}
 
+\newlength{\nameW}
 \define@cmdkeys{info-l}[]{Cost,CostA,Type,Expantion,Artwork,Copy}
-\NewDocumentCommand\LandscapeInfo{m m t+ o d() m +m o}{{%
+\NewDocumentCommand\LandscapeInfo{m m t+ o d() s m +m o}{{%
 	\newcommand{\CardNameEN}{#1}%
 	\newcommand{\CardNameJA}{#2}%
 	\newboolean{shortname}\setboolean{shortname}{false}%
 	\IfBooleanT{#3}{\setboolean{shortname}{true}}%
 	\IfValueT{#4}{\newcommand{\AdditionalCard}{#4}}%
 	\IfValueT{#5}{\newcommand{\FromCard}{#5}}%
-	\setkeys{info-l}{#6}%
+	\IfBooleanTF{#6}{\setlength{\nameW}{36mm}}{\setlength{\nameW}{31mm}}%（コスト有無）
+	\setkeys{info-l}{#7}%
 	\ifthenelse{\isundefined{\Cost}}{}{\def\CostA{\Coin{\Cost}}}%
 	\ifthenelse{\isundefined{\Color}}{\def\Color{\Type}}{}%
 	\providecommand{\Artwork}{test-l.pdf}%
-	\newcommand{\Text}{#7}%
-	\IfValueT{#8}{\def\errata{#8}}%
+	\newcommand{\Text}{#8}%
+	\IfValueT{#9}{\def\errata{#9}}%
 	\begin{tikzpicture}[x=1mm,y=1mm]
 		\setlength{\parindent}{1\zw}
 		% 座標
@@ -400,7 +402,8 @@
 		\draw[path picture={\node at (path picture bounding box.center)
 			{\includegraphics[width=80mm,height=20mm,keepaspectratio,min size={80mm}{20mm},clip]{\Artwork}};
 			\draw[black,line width=3mm+1pt](Y1)--(Y2);
-			\draw[\Color,line width=3mm](Y1)--(Y2)node[midway,sloped,font=\hmnfont,color=black]{\hminwidth*{10mm}{\Type}};
+			\draw[\Color,line width=3mm](Y1)--(Y2)
+				node[midway,sloped,font=\hmnfont,color=black]{\hminwidth*{10mm}{\Type}};
 		}](A1)-|(A3)-|cycle;
 		% カード名
 		\filldraw[fill=\Color](N3)rectangle(NE1);
@@ -410,7 +413,7 @@
 		% テキスト
 		\filldraw[fill=\Color](T3)rectangle(T1);
 		\path(T1)--(T3)node
-			[midway,anchor=center,outer sep=0,inner sep=1mm,text width=47.5mm,text justified,color=black]{
+			[midway,anchor=center,outer sep=0,inner sep=1mm,text width=75mm,text justified,color=black]{
 				\Text
 			};
 		% コスト
@@ -422,7 +425,7 @@
 			{\hminwidth{8mm}{\hmfukuro{\Expantion}}};
 		% カード名横
 		\path(SN)node[anchor=south west,inner ysep=.25mm,font=\hmsfont]
-			{\hminwidth*{31mm}{%
+			{\hminwidth*{\nameW}{%
 				\ltjsetparameter{autoxspacing=false}%
 				\fontsize{4mm}{0}\selectfont%
 				◎%
