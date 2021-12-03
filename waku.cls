@@ -183,33 +183,31 @@
 \NewDocumentCommand\Coin{m s t+}{%
 	\tikz[baseline=(T.base)]{
 		\draw
-		node[anchor=center,inner sep=0pt,outer sep=0pt,](T){\includegraphics[height=1.1\zh]{Coin.png}}
+		node[anchor=center,inner sep=0pt,outer sep=0pt,](C){\includegraphics[height=1.1\zh]{Coin.png}}
 		node[anchor=center,inner sep=0pt,outer sep=0pt,font=\hmcfont](T)
-		{\textcolor{black}{#1\textsuperscript{\IfBooleanT{#2}{*}\IfBooleanT{#3}{+}}}}
-		node[anchor=center,inner sep=0pt,outer sep=0pt,font=\hmcfont](T){\phantom{1}};
+		{\vphantom{1}\textcolor{black}{#1\textsuperscript{\IfBooleanT{#2}{*}\IfBooleanT{#3}{+}}}}
 	}%
 }
 \NewDocumentCommand\Debt{m}{%
 	\tikz[baseline=(T.base)]{
 		\draw
-		node[anchor=center,inner sep=0pt,outer sep=0pt,](T){\includegraphics[height=1.1\zh]{Debt.png}}
-		node[anchor=center,inner sep=0pt,outer sep=0pt,font=\hmcfont](T){\textcolor{white}{#1}}
-		node[anchor=center,inner sep=0pt,outer sep=0pt,font=\hmcfont](T){\phantom{1}};
+		node[anchor=center,inner sep=0pt,outer sep=0pt,](C){\includegraphics[height=1.1\zh]{Debt.png}}
+		node[anchor=center,inner sep=0pt,outer sep=0pt,font=\hmcfont](T){\vphantom{1}\textcolor{white}{#1}}
 	}%
 }
 \NewDocumentCommand\VP{o}{%
 	\IfValueT{#1}{#1}%
 	\tikz[baseline=(T.base)]{
 		\draw
-		node[anchor=center,inner sep=0pt,outer sep=0pt,](T){\includegraphics[height=1.1\zh]{VP.png}}
-		node[anchor=center,inner sep=0pt,outer sep=0pt,font=\hmcfont](T){\phantom{1}};
+		node[anchor=center,inner sep=0pt,outer sep=0pt,](C){\includegraphics[height=1.1\zh]{VP.png}}
+		node[anchor=center,inner sep=0pt,outer sep=0pt,font=\hmcfont](T){\vphantom{1}};
 	}%
 }
 \NewDocumentCommand\Potion{}{%
 	\tikz[baseline=(T.base)]{
 		\draw
-		node[anchor=center,inner sep=0pt,outer sep=0pt,](T){\includegraphics[height=1.1\zh]{Potion.png}}
-		node[anchor=center,inner sep=0pt,outer sep=0pt,font=\hmcfont](T){\phantom{1}};
+		node[anchor=center,inner sep=0pt,outer sep=0pt,](C){\includegraphics[height=1.1\zh]{Potion.png}}
+		node[anchor=center,inner sep=0pt,outer sep=0pt,font=\hmcfont](T){\vphantom{1}};
 	}%
 }
 
